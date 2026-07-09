@@ -1,3 +1,4 @@
 /.env
 /.json
 Backend/reviews.json
+__pycache__/

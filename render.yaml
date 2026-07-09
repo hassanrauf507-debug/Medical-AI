@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: medical-ai-backend
+    runtime: python
+    plan: free
+    rootDir: Backend
+    buildCommand: pip install -r ../requirement.txt
+    startCommand: gunicorn -w 2 -b 0.0.0.0:$PORT backend_logic:app
+
+  - type: web
+    name: medical-ai-frontend
+    runtime: python
+    plan: free
+    rootDir: Frontend
+    buildCommand: pip install -r ../requirement.txt
+    startCommand: streamlit run app.py --server.port $PORT --server.address 0.0.0.0
+    envVars:
+      - key: BACKEND_URL
+        sync: false

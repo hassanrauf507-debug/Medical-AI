@@ -1,7 +1,9 @@
+import os
+
 import requests
 import streamlit as st
 
-BACKEND_URL = "http://localhost:5000/api/reviews"
+BACKEND_URL = os.environ.get("BACKEND_URL", "http://localhost:5000").rstrip("/") + "/api/reviews"
 
 st.set_page_config(page_title="Patient Experience Feedback", page_icon="🏥")
 st.title("Patient Experience Feedback")
